@@ -1,5 +1,7 @@
 package com.ameec.camino.entities;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
@@ -21,9 +23,8 @@ public class Trip {
     @JsonBackReference
     private User user;
 
-    @OneToMany
-    @JsonBackReference
-    private Subscriber subscriber;
+    @OneToMany(mappedBy = "trip")
+    private List<Subscriber> subscribers;
 
 
 }

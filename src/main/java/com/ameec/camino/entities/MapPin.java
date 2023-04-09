@@ -28,5 +28,5 @@ public class MapPin {
     private Double latitude;
 
     @Column
-    private Double city;
+    private String city;
 }
