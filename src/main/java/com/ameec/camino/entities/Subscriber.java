@@ -7,7 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="Subscribers")
 public class Subscriber {
@@ -19,5 +25,5 @@ public class Subscriber {
     private Trip trip;
 
     @Column
-    private String sub_display_name;
+    private String display_name;
 }
