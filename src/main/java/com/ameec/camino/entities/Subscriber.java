@@ -24,6 +24,9 @@ public class Subscriber {
     @ManyToOne
     private Trip trip;
 
+    // user
+
+    // change to user subscriber
     @Column
     private String display_name;
 }

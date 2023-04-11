@@ -1,4 +1,4 @@
-package com.ameec.camino.entities.dtos;
+package com.ameec.camino.dtos;
 
 import java.io.Serializable;
 import java.util.HashSet;

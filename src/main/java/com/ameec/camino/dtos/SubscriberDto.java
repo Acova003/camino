@@ -1,4 +1,4 @@
-package com.ameec.camino.entities.dtos;
+package com.ameec.camino.dtos;
 
 import com.ameec.camino.entities.Subscriber;
 import com.ameec.camino.entities.Trip;
