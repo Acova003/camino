@@ -1,6 +1,6 @@
 package com.ameec.camino.entities;
 
-import com.ameec.camino.entities.dtos.UserDto;
+import com.ameec.camino.dtos.UserDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
