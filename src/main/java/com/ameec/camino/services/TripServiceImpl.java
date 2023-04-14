@@ -1,5 +1,57 @@
 package com.ameec.camino.services;
 
-public class TripServiceImpl {
-    
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ameec.camino.dtos.TripDto;
+import com.ameec.camino.entities.Trip;
+import com.ameec.camino.entities.User;
+import com.ameec.camino.repositories.TripRepository;
+import com.ameec.camino.repositories.UserRepository;
+
+@Service
+public class TripServiceImpl implements TripService{
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private TripRepository tripRepository;
+
+    @Transactional
+    public Trip createTripAtSignup(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            Trip trip = new Trip();
+            trip.setUser(user);
+
+            return tripRepository.save(trip);
+        } else {
+            throw new RuntimeException("User not found with id: " + userId);
+        }
+    }
+
+    @Override
+    public Optional<Trip> getTripByUserId(Long userId) {
+        return tripRepository.findByUserId(userId);
+    }
+    @Override
+    public Trip updateTrip(Trip updatedTrip) {
+        Optional<Trip> tripOptional = tripRepository.findById(updatedTrip.getId());
+        if (tripOptional.isPresent()) {
+            Trip trip = tripOptional.get();
+            // Update trip properties here, e.g., trip.setName(updatedTrip.getName());
+
+            return tripRepository.save(trip);
+        } else {
+            throw new RuntimeException("Trip not found with id: " + updatedTrip.getId());
+        }
+    }
+
+    @Override
+    public void deleteTrip(Long tripId) {
+        tripRepository.deleteById(tripId);
+    }
 }
