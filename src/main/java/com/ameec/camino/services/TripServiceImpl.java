@@ -37,21 +37,20 @@ public class TripServiceImpl implements TripService{
     public Optional<Trip> getTripByUserId(Long userId) {
         return tripRepository.findByUserId(userId);
     }
-    @Override
-    public Trip updateTrip(Trip updatedTrip) {
-        Optional<Trip> tripOptional = tripRepository.findById(updatedTrip.getId());
-        if (tripOptional.isPresent()) {
-            Trip trip = tripOptional.get();
-            // Update trip properties here, e.g., trip.setName(updatedTrip.getName());
-
-            return tripRepository.save(trip);
-        } else {
-            throw new RuntimeException("Trip not found with id: " + updatedTrip.getId());
-        }
+    
+    @Transactional
+    public void deleteTripByUserId(Long userId) {
+        tripRepository.deleteByUserId(userId);
     }
 
-    @Override
-    public void deleteTrip(Long tripId) {
-        tripRepository.deleteById(tripId);
+    @Transactional
+    public void updateTripById(TripDto tripDto){
+        Optional<Trip> tripOptional = tripRepository.findById(tripDto.getId());
+        tripOtional.ifPresent(trip -> {
+            trip.setSubscriberSet(tripDto.getSubscriberDtoSet().stream()
+                    .map(Subscriber::new)
+                    .collect(Collectors.toSet()));
+            tripRepository.saveAndFlush(trip);
+        });
     }
 }
