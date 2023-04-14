@@ -13,12 +13,13 @@ import com.ameec.camino.repositories.TripRepository;
 import com.ameec.camino.repositories.UserRepository;
 
 @Service
-public class TripServiceImpl implements TripService{
+public class TripServiceImpl implements TripService, TripService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private TripRepository tripRepository;
 
+    @Override
     @Transactional
     public Trip createTripAtSignup(Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
@@ -38,11 +39,13 @@ public class TripServiceImpl implements TripService{
         return tripRepository.findByUserId(userId);
     }
     
+    @Override
     @Transactional
     public void deleteTripByUserId(Long userId) {
         tripRepository.deleteByUserId(userId);
     }
 
+    @Override
     @Transactional
     public void updateTripById(TripDto tripDto){
         Optional<Trip> tripOptional = tripRepository.findById(tripDto.getId());
