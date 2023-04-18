@@ -13,7 +13,7 @@ import com.ameec.camino.repositories.TripRepository;
 import com.ameec.camino.repositories.UserRepository;
 
 @Service
-public class TripServiceImpl implements TripService, TripService {
+public class TripServiceImpl implements TripService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
