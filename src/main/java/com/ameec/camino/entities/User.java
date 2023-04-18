@@ -1,12 +1,16 @@
 package com.ameec.camino.entities;
 
+import java.util.Set;
+
 import com.ameec.camino.dtos.UserDto;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +37,12 @@ public class User {
 
     @Column
     private String step_count;
+
+    @OneToMany(mappedBy = "subscriber", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Subscriber> subscriptions;
+
+    @OneToMany(mappedBy = "subscribedUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Subscriber> subscribers;
 
     public User(UserDto userDto){
         if (userDto.getId() != null){
