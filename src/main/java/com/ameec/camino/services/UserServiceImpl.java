@@ -16,13 +16,14 @@ import com.ameec.camino.entities.User;
 import com.ameec.camino.repositories.UserRepository;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Override
     @Transactional
     public List<String> addUser(UserDto userDto) {
         List<String> response = new ArrayList<>();
@@ -32,11 +33,14 @@ public class UserServiceImpl {
         return response;
     }
 
-    @Repository
+    @Override
     public interface UserRepository extends JpaRepository<User, Long>{
-        Optional<User> findByEmail(String email);
+        Optional<User> findByEmail(String email){
+            return userRepository.findByEmail(email);
+        };
     }
 
+    @Override
     @Transactional
     public List<String> userLogin(UserDto userDto) {
         List<String> response = new ArrayList<>();
