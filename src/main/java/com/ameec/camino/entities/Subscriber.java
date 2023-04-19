@@ -1,5 +1,7 @@
 package com.ameec.camino.entities;
 
+import com.ameec.camino.dtos.SubscriberDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,4 +37,19 @@ public class Subscriber {
 
     @Column
     private String display_name;
+
+    public void SubscriberDto(SubscriberDto subscriberDto){
+        if (subscriberDto.getId() != null) {
+            this.id = subscriberDto.getId();
+        }
+        if (subscriberDto.getTrip() != null) {
+            this.trip = subscriberDto.getTrip();
+        }
+        if (subscriberDto.getSubscribedUser() != null) {
+            this.subscriber = subscriberDto.getSubscribedUser();
+        }
+        if (subscriberDto.getDisplay_name() != null) {
+            this.display_name = subscriber.getDisplay_name();
+        }
+    }
 }
