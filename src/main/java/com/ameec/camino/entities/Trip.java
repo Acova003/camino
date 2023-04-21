@@ -2,8 +2,10 @@ package com.ameec.camino.entities;
 
 import java.util.List;
 
+import com.ameec.camino.dtos.TripDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,5 +34,15 @@ public class Trip {
     @OneToMany(mappedBy = "trip")
     private List<Subscriber> subscribers;
 
+    @Column
+    private String step_count;
+    
+    @Column
+    private Double kms_remaining;
 
+    public Trip(TripDto tripDto){
+        if (tripDto.getKms_remaining() != null) {
+            this.kms_remaining = tripDto.getKms_remaining();
+        }
+    }
 }
