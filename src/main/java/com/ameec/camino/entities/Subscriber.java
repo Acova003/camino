@@ -35,10 +35,7 @@ public class Subscriber {
     @JoinColumn(name = "user_id")
     private User subscribedUser;
 
-    @Column
-    private String display_name;
-
-    public void SubscriberDto(SubscriberDto subscriberDto){
+    public Subscriber(SubscriberDto subscriberDto){
         if (subscriberDto.getId() != null) {
             this.id = subscriberDto.getId();
         }
@@ -48,8 +45,6 @@ public class Subscriber {
         if (subscriberDto.getSubscribedUser() != null) {
             this.subscriber = subscriberDto.getSubscribedUser();
         }
-        if (subscriberDto.getDisplay_name() != null) {
-            this.display_name = subscriber.getDisplay_name();
-        }
     }
+    
 }
