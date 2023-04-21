@@ -1,5 +1,5 @@
 package com.ameec.camino.services;
 
-public class MapPinServiceImpl {
+public class MapPinServiceImpl implements MapPinService{
     
 }
