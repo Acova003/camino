@@ -30,5 +30,7 @@ public class UserDto implements Serializable {
         if (user.getDisplay_name() != null){
             this.display_name = user.getDisplay_name();
         }
+        // add if block for step count
+        // for both dto and entity
     }
 }
