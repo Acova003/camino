@@ -16,20 +16,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TripDto implements Serializable{
     private Long id;
-    private String user;
-    private Set<SubscriberDto> subscriberDtoSet = new HashSet<>();
+    private Double kms_remaining;
+    private Long step_count;
 
     public TripDto(Trip trip) {
         if (trip.getId() != null){
             this.id = trip.getId();
         }
-        if (trip.getUser() != null){
-            this.user = trip.getUser().getEmail();
-        }
-        if (trip.getSubscribers() != null) {
-            this.subscriberDtoSet = trip.getSubscribers().stream()
-                    .map(SubscriberDto::new)
-                    .collect(Collectors.toSet());
+        // if (trip.getUser() != null){
+        //     this.user = trip.getUser().getEmail();
+        // }
+        // if (trip.getSubscribers() != null) {
+        //     this.subscriberDtoSet = trip.getSubscribers().stream()
+        //             .map(SubscriberDto::new)
+        //             .collect(Collectors.toSet());
+        // }
+        // finish
+        // if (trip.getStep_count() != null) {
+        if (trip.getKms_remaining() != null) {
+            this.kms_remaining = trip.getKms_remaining();
         }
     }
 }
