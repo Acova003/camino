@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class SubscriberDto {
     private Long id;
     private Trip trip;
-    private String display_name;
     private User subscribedUser;
 
     public SubscriberDto(SubscriberDto subscriber){
