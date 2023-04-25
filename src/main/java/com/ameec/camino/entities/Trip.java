@@ -32,7 +32,7 @@ public class Trip {
     private User user;
 
     @OneToMany(mappedBy = "trip")
-    private List<Subscriber> subscribers;
+    private List<Subscription> subscriptions;
 
     @Column
     private String step_count;
