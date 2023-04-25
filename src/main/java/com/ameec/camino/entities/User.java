@@ -35,14 +35,11 @@ public class User {
     @Column(unique = true)
     private String display_name; 
 
-    @Column
-    private String step_count;
-
     @OneToMany(mappedBy = "subscriber", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Subscriber> subscriptions;
+    private Set<Subscription> subscriptions;
 
     @OneToMany(mappedBy = "subscribedUser", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Subscriber> subscribers;
+    private Set<Subscription> subscribers;
 
     public User(UserDto userDto){
         if (userDto.getId() != null){
