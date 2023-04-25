@@ -17,4 +17,7 @@ public interface TripService {
 
     @Transactional
     void updateTripById(TripDto tripDto);
+
+    @Transactional
+    Double getKms_remaining(TripDto tripDto);
 }
