@@ -1,6 +1,6 @@
 package com.ameec.camino.dtos;
 
-import com.ameec.camino.entities.Subscriber;
+import com.ameec.camino.entities.Subscription;
 import com.ameec.camino.entities.Trip;
 import com.ameec.camino.entities.User;
 
@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubscriberDto {
+public class SubscriptionDto {
     private Long id;
     private Trip trip;
     private User subscribedUser;
 
-    public SubscriberDto(SubscriberDto subscriber){
+    public SubscriptionDto(SubscriptionDto subscriber){
         if (subscriber.getId() != null) {
             this.id = subscriber.getId();
         }

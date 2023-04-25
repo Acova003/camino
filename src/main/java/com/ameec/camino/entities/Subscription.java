@@ -1,6 +1,6 @@
 package com.ameec.camino.entities;
 
-import com.ameec.camino.dtos.SubscriberDto;
+import com.ameec.camino.dtos.SubscriptionDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="Subscribers")
-public class Subscriber {
+// change to subscription class
+public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,16 +36,16 @@ public class Subscriber {
     @JoinColumn(name = "user_id")
     private User subscribedUser;
 
-    public Subscriber(SubscriberDto subscriberDto){
-        if (subscriberDto.getId() != null) {
-            this.id = subscriberDto.getId();
+    public Subscription(SubscriptionDto subscriptionDto){
+        if (subscriptionDto.getId() != null) {
+            this.id = subscriptionDto.getId();
         }
-        if (subscriberDto.getTrip() != null) {
-            this.trip = subscriberDto.getTrip();
+        if (subscriptionDto.getTrip() != null) {
+            this.trip = subscriptionDto.getTrip();
         }
-        if (subscriberDto.getSubscribedUser() != null) {
-            this.subscriber = subscriberDto.getSubscribedUser();
+        if (subscriptionDto.getSubscribedUser() != null) {
+            this.subscriber = subscriptionDto.getSubscribedUser();
         }
     }
-    
+
 }
