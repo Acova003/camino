@@ -26,21 +26,20 @@ public class SubscriberServiceImpl implements SubscriberService{
     @Override
     public void subscribe(String subscriberEmail, String subscribedUserEmail) {
         Optional<User> subscriberOptional = UserRepository.findByEmail(subscriberEmail);
-        // Optional<User> subscriberOptional = SubscriberRepository.findByEmail(subscriberEmail);
         Optional<User> subscribedUserOptional = UserRepository.findByEmail(subscribedUserEmail);
 
         if (subscriberOptional.isPresent() && subscribedUserOptional.isPresent()) {
             User subscriber = subscriberOptional.get();
            
-            // change name to subscription
+            
             User subscribedUser = subscribedUserOptional.get();
             Optional<Trip> findTrip= TripRepository.findByUserId(subscribedUser.getId());
-            // check if findTrip is present
-            // if not, throw an error
-            // include code below in the if statement
+    
+            if (!findTrip.isPresent()) {
+                throw new RuntimeException("Trip not found.");
+            }
             Subscription subscription = new Subscription();
             subscription.setSubscriber(subscriber);
-            // whatever I'm going to pull from subscribed user is going to go in the argument below
             subscription.setTrip(findTrip.get());
             SubscriberRepository.save(subscription);
         } else {
