@@ -15,6 +15,11 @@ public class CaminoApplication {
         System.setProperty("spring.datasource.url", dbUrl);
         System.setProperty("spring.datasource.username", dbUser);
         System.setProperty("spring.datasource.password", dbPassword);
+
+        String port = System.getenv("PORT");
+        System.setProperty("server.address", "0.0.0.0");
+        System.setProperty("server.port", port);
+
 		SpringApplication.run(CaminoApplication.class, args);
 	}
 
