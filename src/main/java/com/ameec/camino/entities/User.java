@@ -35,6 +35,9 @@ public class User {
     @Column(unique = true)
     private String display_name; 
 
+    @Column
+    private Long steps;
+
     @OneToMany(mappedBy = "subscriber", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Subscription> subscriptions;
 
@@ -52,7 +55,11 @@ public class User {
             this.password = userDto.getPassword();
         }
         if (userDto.getDisplay_name() != null){
+            // change to camel case
             this.display_name = userDto.getDisplay_name();
+        }
+        if (userDto.getSteps() != null){
+            this.steps = userDto.getSteps();
         }
     }
 }
