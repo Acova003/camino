@@ -15,7 +15,7 @@ public class UserDto implements Serializable {
     private String email;
     private String password;
     private String display_name;
-    private String step_count;
+    private Long steps;
 
     public UserDto(User user) {
         if (user.getId() != null){
@@ -30,7 +30,8 @@ public class UserDto implements Serializable {
         if (user.getDisplay_name() != null){
             this.display_name = user.getDisplay_name();
         }
-        // add if block for step count
-        // for both dto and entity
+        if (user.getSteps() != null){
+            this.steps = user.getSteps();
+        }
     }
 }
