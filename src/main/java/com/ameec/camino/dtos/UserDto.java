@@ -14,7 +14,7 @@ public class UserDto implements Serializable {
     private Long id;
     private String email;
     private String password;
-    private String display_name;
+    private String displayName;
     private Long steps;
 
     public UserDto(User user) {
@@ -27,8 +27,8 @@ public class UserDto implements Serializable {
         if (user.getPassword() != null){
             this.password = user.getPassword();
         }
-        if (user.getDisplay_name() != null){
-            this.display_name = user.getDisplay_name();
+        if (user.getDisplayName() != null){
+            this.displayName = user.getDisplayName();
         }
         if (user.getSteps() != null){
             this.steps = user.getSteps();

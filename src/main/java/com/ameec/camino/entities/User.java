@@ -33,7 +33,7 @@ public class User {
     private String password;
 
     @Column(unique = true)
-    private String display_name; 
+    private String displayName; 
 
     @Column
     private Long steps;
@@ -54,9 +54,9 @@ public class User {
         if (userDto.getPassword() != null){
             this.password = userDto.getPassword();
         }
-        if (userDto.getDisplay_name() != null){
+        if (userDto.getDisplayName() != null){
             // change to camel case
-            this.display_name = userDto.getDisplay_name();
+            this.displayName = userDto.getDisplayName();
         }
         if (userDto.getSteps() != null){
             this.steps = userDto.getSteps();
