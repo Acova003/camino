@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,15 @@ public class UserController {
 
     @PostMapping("/login")
     public List<String> userLogin(@RequestBody UserDto userDto){
-        return userService.userLogin(userDto);
+        String passHash = passwordEncoder.encode(userDto.getPassword());
+        return userService.userLogin(userDto, passHash);
     }
+    // @RequestBody saying create this variable based on the JSON request that just came in
+
+    @PostMapping("/subscribe/{subscribeeEmail}/{subscriberId}")
+    public List<String> subscribe(@PathVariable String subscribeeEmail, @PathVariable Long subscriberId){
+        return userService.subscribe(subscribeeEmail, subscriberId);
+    }  
+    
 }
 
