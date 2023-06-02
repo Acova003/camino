@@ -24,9 +24,25 @@ const handleSubmit = async (e) =>{
     .catch(err => console.error(err.message))
 
   const userObject = await response.json()
+  document.getElementById('displayName').innerText = userObject.displayName;
+  document.getElementById('steps').innerText = userObject.steps;
+
+  // Calculate kms and distance_to_santiago here
+  let steps = userObject.steps; // get the steps from userObject
+  let kms = steps * 0.00076; // calculate kms
+  let distance_to_santiago = 807 - kms; // calculate distance_to_santiago
+  distance_to_santiago = Math.round(distance_to_santiago); // round the result
+
+  // Display distance to Santiago
+  document.getElementById('distance').innerText = `Distance to Santiago: ${distance_to_santiago} km`;
+
+  // Display distance traveled
+  document.getElementById('distanceTraveled').innerText = `Distance traveled: ${Math.round(kms)} km`;
+
   console.log(userObject);
   console.log("request done")};
 handleSubmit();
+
 
 var map = new mapboxgl.Map({
   container: 'map',

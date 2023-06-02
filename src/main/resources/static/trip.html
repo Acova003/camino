@@ -27,9 +27,9 @@
         <div class="row">
             <div class="jumbotron">
                 <div class="container">
-                <td> "${userObject.displayName}"</td>
-                  <h6 class="lead"><strong>Distance to Santiago: </strong>x km</h6>
-                  <h6 class="lead"><strong> Distance traveled: </strong>x km</h6>
+                <h6 class="display-4">Welcome, <span id="displayName"></span>!</h6>
+                  <h6 class="lead" id="distance"><strong>Distance to Santiago: </strong>x km</h6>
+                  <h6 class="lead" id="distanceTraveled"><strong> Distance traveled: </strong>x km</h6>
                     <li>
                       <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -68,8 +68,8 @@
         var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/acova003/ckbfuohe64i6o1in70tmp7rdt',
-        center: [ -3.707206, 42.350388],
-        zoom: 5
+        center: [ -5.570000, 42.605556],
+        zoom: 6
         });
 
     </script>
