@@ -14,7 +14,7 @@ const handleSubmit = async (e) =>{
 
     let bodyObj = {
         // change to camel case
-        display_name: registerDisplayname.value,
+        displayName: registerDisplayname.value,
         password: registerPassword.value,
         email: registerEmail.value
     }

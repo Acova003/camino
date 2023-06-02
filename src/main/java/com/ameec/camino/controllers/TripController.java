@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ameec.camino.dtos.UserDto;
 import com.ameec.camino.entities.Trip;
 import com.ameec.camino.services.TripService;
 
@@ -23,4 +25,5 @@ public class TripController {
     public Optional<Trip> getTripByUserId(@PathVariable Long userId) {
         return tripService.getTripByUserId(userId);
     }
+
 }

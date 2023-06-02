@@ -12,7 +12,7 @@ const handleSubmit = async (e) =>{
     e.preventDefault()
 
     let bodyObj = {
-        display_name: logInDisplayName.value,
+        displayName: logInDisplayName.value,
         password: loginPassword.value
     }
 
@@ -26,8 +26,9 @@ const handleSubmit = async (e) =>{
     const responseArr = await response.json()
 
     if (response.status === 200){
+        console.log(responseArr);
         document.cookie = `userId=${responseArr[1]}`;
-        const tripUrl = `http://localhost:8080/api/v1/trip/${responseArr[1]}`;
+        const tripUrl = responseArr[0];
         window.location.replace(tripUrl);
     }
 }

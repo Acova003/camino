@@ -1,13 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Camino Dashboard</title>
+    <link href="/css/trip.css" rel="stylesheet" />
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css}" rel="stylesheet" integrity="sha512-fV43vudI38o7VbOf71PzLX9Xmm/bamhhn2grEOe5w5Z10l5ZC57BpGgJoIwtjAJzuzo6A8DyWbXvDYwoLFmJ/w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-    <h1>trip</h1>
-    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <h1>Camino Dashboard</h1>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="container">
+                <td> "${userObject.displayName}"</td>
+                  <h6 class="lead"><strong>Distance to Santiago: </strong>x km</h6>
+                  <h6 class="lead"><strong> Distance traveled: </strong>x km</h6>
+                    <li>
+                      <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg>
+                      <span id="googleSVLocation">
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Map of Progress</h5>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <form id = "steps-form" name="update-steps">
+                    <div class="mb-3">
+                        <label for="steps" class="form-label">Update Steps</label>
+                        <input type="number" class="form-control" id="steps" name="steps" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="./javascript/trip.js" type="application/javascript"></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWNvdmEwMDMiLCJhIjoiY2tiZnR4NHhiMHo1bDMwbXptbzVpa2ZqYiJ9.-3yiof0FhfqNoWeqMsa-dw';
+
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/acova003/ckbfuohe64i6o1in70tmp7rdt',
+        center: [ -3.707206, 42.350388],
+        zoom: 5
+        });
+
+    </script>
 </body>
 </html>
+

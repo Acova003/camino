@@ -1,0 +1,51 @@
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Card */
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+/* Map */
+#map {
+    width: 60%;  
+    height: 400px;
+}
+
+/* Form */
+form {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+.form-control:focus {
+    border-color: #3b99fc;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #3b99fc;
+    border-color: #3b99fc;
+}
+
+.btn-primary:hover {
+    background-color: #2880d8;
+    border-color: #2880d8;
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn-primary:active {
+    background-color: #2066a0;
+    border-color: #2066a0;
+}
+
+#googleSVLocation {
+    font-size: 25px;
+    font-weight: 400;
+  }
