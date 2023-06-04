@@ -1,22 +1,55 @@
+
 //Cookie
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
+
+let locations= null;
+
+async function getLocations() {
+
+// Load locations.json at the start of your script
+let response = await fetch('/api/v1/trip/locations') 
+    let locations = await response.json();
+
 
 const registerForm = document.getElementById('register-form')
 
 console.log(userId);
 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWNvdmEwMDMiLCJhIjoiY2tiZnR4NHhiMHo1bDMwbXptbzVpa2ZqYiJ9.-3yiof0FhfqNoWeqMsa-dw';
+mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
+
+let userLon = -1.23501836322248;
+let userLat = 43.16366490907967;
 
 
-var userLon, userLat;
-if(window.currentLocation) {
-    userLon = window.currentLocation.longitude;
-    userLat = window.currentLocation.latitude;
-} else {
-    userLon = 43.16366490907967;
-    userLat = -1.23501836322248;
+function calculateCurrentLocation(kms) {
+  let previousKey = null;
+  let previousValue = null;
+
+  Object.keys(locations).forEach(function(key) {
+      let keyAsNumber = Number(key);
+      if(keyAsNumber < kms) {
+          previousKey = key;
+          previousValue = locations[key];
+      } else {
+          // stop iteration
+          return false;
+      }
+  });
+
+  if(previousValue !== null) {
+      // use previousValue (which is the latitude and longitude)
+      let lat = previousValue.lat;
+      let lon = previousValue.lon;
+      // Update user's location
+      userLon = lon;
+      userLat = lat;
+     
+  } else {
+      console.log('No previous location found for the current distance traveled.');
+
+  }
 }
 const baseUrl = 'http://localhost:8080/api/v1/users';
 const handleSubmit = async (e) =>{
@@ -30,6 +63,7 @@ const handleSubmit = async (e) =>{
   // Calculate kms and distance_to_santiago here
   let steps = userObject.steps; // get the steps from userObject
   let kms = steps * 0.00076; // calculate kms
+  calculateCurrentLocation(kms);
   let distance_to_santiago = 807 - kms; // calculate distance_to_santiago
   distance_to_santiago = Math.round(distance_to_santiago); // round the result
 
@@ -41,7 +75,10 @@ const handleSubmit = async (e) =>{
 
   console.log(userObject);
   console.log("request done")};
-handleSubmit();
+await handleSubmit();
+
+console.log("This is userLon: " + userLon);
+console.log("This is userLat: " + userLat);
 
 
 var map = new mapboxgl.Map({
@@ -49,8 +86,10 @@ var map = new mapboxgl.Map({
   style: 'mapbox://styles/acova003/ckbfuohe64i6o1in70tmp7rdt',
   // center will be the user location
   center: [userLon, userLat],
-  zoom: 4.5
+  zoom: 12
 });
+console.log(map.getCenter());
+window.map = map;
 
 var geojson = {
   type: 'FeatureCollection',
@@ -62,25 +101,34 @@ var geojson = {
     },
     properties: {
       title: 'Mapbox',
-      description: 'Santiago de Compostela'
+      description: 'Santiago de Compostela',
+      image: 'santiago' 
+    }
+  }, {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-6.361367369309478, 42.48920595281204] 
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Cruz de Ferro',
+      image: 'cruz-de-ferro'
+    }
+  }, {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [userLon, userLat] 
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Current Location',
+      image: 'current-location'
     }
   }]
 };
 
-var user_location = {
-  type: 'FeatureCollection',
-  features: [{
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [userLon, userLat]
-    },
-    properties: {
-      title: 'Mapbox',
-      description: 'User progress on the camino'
-    }
-  }]
-};
 
 
 // add markers to map
@@ -88,25 +136,14 @@ geojson.features.forEach(function(marker) {
 
   // create a HTML element for each feature
   var el = document.createElement('div');
-  el.className = 'santiago';
+  el.className = marker.properties.image;
 
   // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
+  new mapboxgl.Marker(el, marker.properties.image == 'santiago' || marker.properties.image == 'current-location'? {anchor: 'bottom'} : undefined)
     .setLngLat(marker.geometry.coordinates)
     .addTo(map);
 });
 
-user_location.features.forEach(function(marker) {
-
-  // create a HTML element for each feature
-  var el = document.createElement('div');
-  el.className = 'currentLocation';
-
-  // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
-});
 
 map.addControl(new mapboxgl.NavigationControl());
 
@@ -123,12 +160,12 @@ const updateSteps = async (e) =>{
   }
 }
 
-
-document.addEventListener('DOMContentLoaded', function(){
   var stepsForm = document.getElementById("steps-form"); 
   if(stepsForm) {
       stepsForm.addEventListener("submit", updateSteps);
   } else {
       console.log("Form not found!");
   }
-});
+};
+
+getLocations();
