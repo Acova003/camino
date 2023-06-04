@@ -2,7 +2,6 @@ package com.ameec.camino.services;
 
 import java.util.List;
 import com.ameec.camino.dtos.UserDto;
-import com.ameec.camino.entities.User;
 
 public interface UserService{
 
