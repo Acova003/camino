@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ameec.camino.dtos.UserDto;
-import com.ameec.camino.entities.Trip;
+// import com.ameec.camino.entities.Trip;
 import com.ameec.camino.entities.User;
-import com.ameec.camino.repositories.TripRepository;
+// import com.ameec.camino.repositories.TripRepository;
 import com.ameec.camino.repositories.UserRepository;
 
 @Service
@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private TripRepository tripRepository;
+    // @Autowired
+    // private TripRepository tripRepository;
 
     @Override
     @Transactional
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            user.setSteps(steps);
+            user.setSteps(user.getSteps() + steps);
             userRepository.save(user);
             response.add("Steps updated");
         } else {
