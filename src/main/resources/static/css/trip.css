@@ -49,3 +49,33 @@ form {
     font-size: 25px;
     font-weight: 400;
   }
+
+.santiago {
+    background-image: url('/img/cathedral.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -30px;
+}
+
+.cruz-de-ferro {
+    background-image: url('/img/cruz_de_ferro.png');
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.current-location {
+    background-image: url('/img/user_pin.png');
+    background-size: cover;
+    width: 30px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
