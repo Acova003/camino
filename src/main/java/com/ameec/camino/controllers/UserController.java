@@ -26,6 +26,7 @@ public class UserController {
     public List<String> addUser(@RequestBody UserDto userDto){
         String passHash = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(passHash);
+        userDto.setSteps(0L);
         return userService.addUser(userDto);
     }
 
