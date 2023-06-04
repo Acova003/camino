@@ -45,6 +45,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Map of Progress</h5>
                         <div id="map"></div>
+                        <div id="panorama"></div>
                     </div>
                 </div>
             </div>
@@ -61,6 +62,9 @@
             </div>
         </div>
     </main>
+    <script async defer
+         src={{GOOGLE_STREET_VIEW_URL}}>
+    </script>
     <script src="./javascript/trip.js" type="application/javascript"></script>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoiYWNvdmEwMDMiLCJhIjoiY2tiZnR4NHhiMHo1bDMwbXptbzVpa2ZqYiJ9.-3yiof0FhfqNoWeqMsa-dw';
@@ -73,6 +77,8 @@
         });
 
     </script>
+
+    
 </body>
 </html>
 
