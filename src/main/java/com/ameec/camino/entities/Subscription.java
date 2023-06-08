@@ -33,7 +33,7 @@ public class Subscription {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User subscribedUser;
+    private User subscribee;
 
     public Subscription(SubscriptionDto subscriptionDto){
         if (subscriptionDto.getId() != null) {
@@ -42,8 +42,11 @@ public class Subscription {
         if (subscriptionDto.getTrip() != null) {
             this.trip = subscriptionDto.getTrip();
         }
-        if (subscriptionDto.getSubscribedUser() != null) {
-            this.subscriber = subscriptionDto.getSubscribedUser();
+        if (subscriptionDto.getSubscribee() != null) {
+            this.subscribee = subscriptionDto.getSubscribee();
+        }
+        if (subscriptionDto.getSubscriber() != null) {
+            this.subscriber = subscriptionDto.getSubscriber();
         }
     }
 

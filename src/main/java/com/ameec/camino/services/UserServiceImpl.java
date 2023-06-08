@@ -36,25 +36,6 @@ public class UserServiceImpl implements UserService {
         return response;
     }
 
-    @Override
-    public List<String> subscribe(String email, Long subscriberId) {
-        List<String> response = new ArrayList<>();
-        Optional<User> subscriberOptional = userRepository.findById(subscriberId);
-        Optional<User> subscribeeOptional = userRepository.findByEmail(email);
-        // check if both of those users are present
-        if (subscriberOptional.isPresent() && subscribeeOptional.isPresent()) {
-            // add the subscriber to the subscribee's list of subscribers
-            // add the subscribee to the subscriber's list of subscribees
-            // make an array list of strings
-            // add to response
-            // return new UserDto(subscriberOptional.get());
-        } else {
-            // add could not find subscriber... subscribee. 
-            // return response
-            return null;
-        }
-        return response;
-    }
 
     @Override
     @Transactional

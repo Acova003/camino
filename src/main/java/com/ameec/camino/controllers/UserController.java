@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ameec.camino.dtos.UserDto;
+import com.ameec.camino.entities.Subscription;
 import com.ameec.camino.services.UserService;
+import com.ameec.camino.services.SubscriberService;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -21,6 +23,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private SubscriberService subscriberService;
 
     @PostMapping("/register")
     public List<String> addUser(@RequestBody UserDto userDto){
@@ -38,9 +42,16 @@ public class UserController {
     // @RequestBody saying create this variable based on the JSON request that just came in
 
     @PostMapping("/subscribe/{subscribeeEmail}/{subscriberId}")
-    public List<String> subscribe(@PathVariable String subscribeeEmail, @PathVariable Long subscriberId){
-        return userService.subscribe(subscribeeEmail, subscriberId);
+    public void subscribe(@PathVariable String subscribeeEmail, @PathVariable Long subscriberId){
+        subscriberService.subscribe(subscribeeEmail, subscriberId);
     }  
+      
+    // get all subscribees
+    @GetMapping("/subscribees/{subscriberId}")
+    public List<Subscription> getSubscribees(@PathVariable Long subscriberId){
+        return subscriberService.getSubscriptions(subscriberId);
+    }
+
 
     @GetMapping("/{userId}") 
     public UserDto getUser(@PathVariable Long userId) {

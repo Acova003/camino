@@ -41,7 +41,7 @@ public class User {
     @OneToMany(mappedBy = "subscriber", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Subscription> subscriptions;
 
-    @OneToMany(mappedBy = "subscribedUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "subscribee", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Subscription> subscribers;
 
     public User(UserDto userDto){

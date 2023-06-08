@@ -1,8 +1,10 @@
 package com.ameec.camino.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ameec.camino.entities.Subscription;
@@ -12,6 +14,7 @@ import com.ameec.camino.repositories.SubscriberRepository;
 import com.ameec.camino.repositories.TripRepository;
 import com.ameec.camino.repositories.UserRepository;
 
+@Service
 public class SubscriberServiceImpl implements SubscriberService{
     @Autowired
     private UserRepository UserRepository;
@@ -24,28 +27,41 @@ public class SubscriberServiceImpl implements SubscriberService{
     
     @Transactional
     @Override
-    public void subscribe(String subscriberEmail, String subscribedUserEmail) {
-        Optional<User> subscriberOptional = UserRepository.findByEmail(subscriberEmail);
-        Optional<User> subscribedUserOptional = UserRepository.findByEmail(subscribedUserEmail);
+    public void subscribe(String subscribeeEmail, Long subscriberId) {
+        Optional<User> subscribeeOptional = UserRepository.findByEmail(subscribeeEmail);
+        Optional<User> subscriberOptional = UserRepository.findById(subscriberId);
 
-        if (subscriberOptional.isPresent() && subscribedUserOptional.isPresent()) {
+        if (subscribeeOptional.isPresent() && subscriberOptional.isPresent()) {
+            User subscribee = subscribeeOptional.get();
             User subscriber = subscriberOptional.get();
-           
-            
-            User subscribedUser = subscribedUserOptional.get();
-            Optional<Trip> findTrip= TripRepository.findByUserId(subscribedUser.getId());
+            Optional<Trip> findTrip= TripRepository.findByUserId(subscribee.getId());
     
             if (!findTrip.isPresent()) {
-                throw new RuntimeException("Trip not found.");
+                // throw new RuntimeException("Trip not found.");
             }
             Subscription subscription = new Subscription();
             subscription.setSubscriber(subscriber);
-            subscription.setTrip(findTrip.get());
+            subscription.setSubscribee(subscribee);
+            // subscription.setTrip(findTrip.get());
             SubscriberRepository.save(subscription);
         } else {
             throw new RuntimeException("Subscriber or subscribed user not found.");
         }
     }
+
+    @Transactional
+    @Override
+    public List<Subscription> getSubscriptions(Long subscriberId) {
+        Optional<User> subscriberOptional = UserRepository.findById(subscriberId);
+        if (subscriberOptional.isPresent()) {
+            User subscriber = subscriberOptional.get();
+            return SubscriberRepository.findAllBySubscriber(subscriber);
+        } else {
+            throw new RuntimeException("Subscriber not found.");
+        }
+    }
+
+
     @Transactional
     @Override
     public void endSubscription(String subscriberEmail, String subscribedUserEmail) {
@@ -56,7 +72,7 @@ public class SubscriberServiceImpl implements SubscriberService{
             User subscriber = subscriberOptional.get();
             User subscribedUser = subscribedUserOptional.get();
 
-            Optional<Subscription> subscriptionOptional = SubscriberRepository.findBySubscriberAndSubscribedUser(subscriber, subscribedUser);
+            Optional<Subscription> subscriptionOptional = SubscriberRepository.findBySubscriberAndSubscribee(subscriber, subscribedUser);
 
             if (subscriptionOptional.isPresent()) {
                 Subscription subscription = subscriptionOptional.get();

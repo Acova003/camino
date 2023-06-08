@@ -13,17 +13,21 @@ import lombok.NoArgsConstructor;
 public class SubscriptionDto {
     private Long id;
     private Trip trip;
-    private User subscribedUser;
+    private User subscribee;
+    private User subscriber;
 
-    public SubscriptionDto(SubscriptionDto subscriber){
-        if (subscriber.getId() != null) {
-            this.id = subscriber.getId();
+    public SubscriptionDto(SubscriptionDto subscription){
+        if (subscription.getId() != null) {
+            this.id = subscription.getId();
         }
-        if (subscriber.getTrip() != null) {
-            this.trip = subscriber.getTrip();
+        if (subscription.getTrip() != null) {
+            this.trip = subscription.getTrip();
         }
-        if (subscriber.getSubscribedUser() != null) {
-            this.subscribedUser = subscriber.getSubscribedUser();
+        if (subscription.getSubscribee() != null) {
+            this.subscribee = subscription.getSubscribee();
+        }
+        if (subscription.getSubscriber() != null) {
+            this.subscriber = subscription.getSubscriber();
         }
     }
 }
