@@ -33,12 +33,10 @@ public class TripServiceImpl implements TripService {
             throw new RuntimeException("User not found with id: " + userId);
         }
     }
-    // make a call to the user repository
-    // find by id
+
 
     @Override
     public Optional<Trip> getTripByUserId(Long userId) {
-        // pass the user id from the code above
         return tripRepository.findByUserId(userId);
     }
     
@@ -48,8 +46,6 @@ public class TripServiceImpl implements TripService {
         tripRepository.deleteByUserId(userId);
     }
 
-    // we got rid of subscriber dto 
-    // what we actually need is to add and delete subscriptions as nessessary
     @Override
     @Transactional
     public void updateTripById(TripDto tripDto){
@@ -61,16 +57,11 @@ public class TripServiceImpl implements TripService {
         //     tripRepository.saveAndFlush(trip);
         // });
     }
-    // service layers is where DTO's and entities meet
+    
     @Override
     @Transactional
     public Double getKms_remaining(TripDto tripDto){
+        // placeholder
         return 0.0;
-        // throwing an error because it's not returning anything
-        // 1312.33595801 steps in a km
-        // calculate kms to sanitiago
-        // kms remaining = 1312.33595801 / total step count 
-
-        // });
     }
 }
