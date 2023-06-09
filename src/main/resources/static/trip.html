@@ -31,10 +31,12 @@
                 <h6 class="display-4">Welcome, <span id="displayName"></span>!</h6>
                   <h6 class="lead" id="distance"><strong>Distance to Santiago: </strong>x km</h6>
                   <h6 class="lead" id="distanceTraveled"><strong> Distance traveled: </strong>x km</h6>
-                    <li>
-                      <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                      </svg>
+                    </svg>
+                    <span id="city"></span>
+                </h6>
+                
                     </li>
                   </ul>
                 </div>
@@ -50,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div id="hidden" style="display:none" class="row mt-4">
             <div class="col-md-6">
                 <form id = "steps-form" name="update-steps">
                     <div class="mb-3">
@@ -66,6 +68,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>
+                <div>
+                    <h2>My Subscribers</h2>
+                    <ul id="subscriberList">
+                    </ul>
+                  </div>
             </div>
         </div>
     </main>

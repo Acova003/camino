@@ -1,16 +1,18 @@
 //Cookie
-const cookieArr = document.cookie.split("=");
-const userId = cookieArr[1];
+let userId = null;
+let isMe = false;
+const match = window.location.search.match(/userId=(\d+)/);
+if (match) {
+  userId = match[1];
+} else {
+  const cookieArr = document.cookie.split("=");
+  userId = cookieArr[1];
+  isMe = true;
+}
 
 let locations = null;
 
 async function getLocations() {
-  let GSV = await fetch("/api/v1/trip/env");
-  let data = await GSV.json();
-  console.log(data);
-  let streetViewApiKey = "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
-  console.log(streetViewApiKey);
-
   // Load locations.json at the start of your script
   let response = await fetch("/api/v1/trip/locations");
   let locations = await response.json();
@@ -56,8 +58,14 @@ async function getLocations() {
       console.error(err.message)
     );
 
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+
     const userObject = await response.json();
-    document.getElementById("displayName").innerText = userObject.displayName;
+    document.getElementById("displayName").innerText = capitalizeFirstLetter(
+      userObject.displayName
+    );
     document.getElementById("steps").innerText = userObject.steps;
 
     // Calculate kms and distance_to_santiago here
@@ -137,6 +145,22 @@ async function getLocations() {
     ],
   };
 
+  fetch(
+    `https://api.opencagedata.com/geocode/v1/json?q=${userLat}+${userLon}&key=4a58715172234dccaac2e51bae09eac1`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data.results && data.results.length > 0) {
+        const city =
+          data.results[0].components.city || data.results[0].components.town;
+        document.getElementById("city").innerText = city;
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
   // add markers to map
   geojson.features.forEach(function (marker) {
     // create a HTML element for each feature
@@ -185,9 +209,39 @@ async function getLocations() {
     ).catch((err) => console.error(err.message));
 
     if (response.status === 200) {
-      window.location.replace("/trip.html");
+      // window.location.replace("/trip.html");
+      updateSubscriberList();
     }
   };
+
+  const updateSubscriberList = async () => {
+    const response = await fetch(`${baseUrl}/subscribees/${userId}`).catch(
+      (err) => console.error(err.message)
+    );
+
+    if (!response.ok) {
+      // handle error
+      return;
+    }
+
+    // get the subscriber list from the response
+    const subscriptionList = await response.json();
+    console.log(subscriptionList);
+
+    // generate the HTML for the subscriber list
+    let html = "";
+    for (const subscription of subscriptionList) {
+      html += `<li><a href="/trip.html?userId=${subscription.subscribee.id}">${subscription.subscribee.displayName}</a></li>`;
+    }
+
+    // update the subscriber list on the page
+    document.getElementById("subscriberList").innerHTML = html;
+  };
+
+  if (isMe) {
+    updateSubscriberList();
+    document.getElementById("hidden").style.display = "block";
+  }
 
   var stepsForm = document.getElementById("steps-form");
   if (stepsForm) {
