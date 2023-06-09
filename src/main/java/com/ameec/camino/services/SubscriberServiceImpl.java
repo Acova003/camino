@@ -36,6 +36,11 @@ public class SubscriberServiceImpl implements SubscriberService{
             User subscriber = subscriberOptional.get();
             // Optional<Trip> findTrip= TripRepository.findByUserId(subscribee.getId());
 
+            // Check if the user is trying to subscribe to themselves
+            if (subscriber.getId().equals(subscribee.getId())) {
+                throw new RuntimeException("You can't subscribe to yourself.");
+            }
+
             // Check if the subscription already exists
             List<Subscription> subscriptions = SubscriberRepository.findAllBySubscriber(subscriber);
             for (Subscription subscription : subscriptions) {
@@ -73,6 +78,7 @@ public class SubscriberServiceImpl implements SubscriberService{
     @Transactional
     @Override
     public void endSubscription(String subscriberEmail, String subscribedUserEmail) {
+        
         Optional<User> subscriberOptional = UserRepository.findByEmail(subscriberEmail);
         Optional<User> subscribedUserOptional = UserRepository.findByEmail(subscribedUserEmail);
 

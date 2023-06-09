@@ -230,11 +230,10 @@ async function getLocations() {
 
     // get the subscriber list from the response
     const subscriptionList = await response.json();
+    let html = "";
     if (subscriptionList.length > 0) {
-      document.getElementById("subscriberList").style.display = "block";
+      document.getElementById("subscriberListHeader").style.display = "block";
 
-      // generate the HTML for the subscriber list
-      let html = "";
       for (const subscription of subscriptionList) {
         html += `<li><a href="/trip.html?userId=${subscription.subscribee.id}">${subscription.subscribee.displayName}</a></li>`;
       }
@@ -247,8 +246,8 @@ async function getLocations() {
   if (isMe) {
     updateSubscriberList();
     document.getElementById("hidden").style.display = "block";
+  } else {
   }
-
   var stepsForm = document.getElementById("steps-form");
   if (stepsForm) {
     stepsForm.addEventListener("submit", updateSteps);
