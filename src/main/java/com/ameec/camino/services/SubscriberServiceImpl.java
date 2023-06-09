@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ameec.camino.entities.Subscription;
-import com.ameec.camino.entities.Trip;
+// import com.ameec.camino.entities.Trip;
 import com.ameec.camino.entities.User;
 import com.ameec.camino.repositories.SubscriberRepository;
 import com.ameec.camino.repositories.TripRepository;
@@ -22,8 +22,8 @@ public class SubscriberServiceImpl implements SubscriberService{
     @Autowired
     private SubscriberRepository SubscriberRepository;
 
-    @Autowired
-    private TripRepository TripRepository;
+    // @Autowired
+    // private TripRepository TripRepository;
     
     @Transactional
     @Override
@@ -34,11 +34,19 @@ public class SubscriberServiceImpl implements SubscriberService{
         if (subscribeeOptional.isPresent() && subscriberOptional.isPresent()) {
             User subscribee = subscribeeOptional.get();
             User subscriber = subscriberOptional.get();
-            Optional<Trip> findTrip= TripRepository.findByUserId(subscribee.getId());
+            // Optional<Trip> findTrip= TripRepository.findByUserId(subscribee.getId());
+
+            // Check if the subscription already exists
+            List<Subscription> subscriptions = SubscriberRepository.findAllBySubscriber(subscriber);
+            for (Subscription subscription : subscriptions) {
+                if (subscription.getSubscribee().equals(subscribee)) {
+                    throw new RuntimeException("You are already subscribed to this user");
+                }
+        }
     
-            if (!findTrip.isPresent()) {
-                // throw new RuntimeException("Trip not found.");
-            }
+            // if (!findTrip.isPresent()) {
+            //     // throw new RuntimeException("Trip not found.");
+            // }
             Subscription subscription = new Subscription();
             subscription.setSubscriber(subscriber);
             subscription.setSubscribee(subscribee);

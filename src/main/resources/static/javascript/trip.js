@@ -201,16 +201,25 @@ async function getLocations() {
   const subscribe = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(
-      `${baseUrl}/subscribe/${
-        document.getElementById("subscribee").value
-      }/${userId}`,
-      { method: "POST" }
-    ).catch((err) => console.error(err.message));
+    try {
+      const response = await fetch(
+        `${baseUrl}/subscribe/${
+          document.getElementById("subscribee").value
+        }/${userId}`,
+        { method: "POST" }
+      );
 
-    if (response.status === 200) {
-      // window.location.replace("/trip.html");
+      if (!response.ok) {
+        const errortext = await response.text();
+        throw new Error(errortext);
+      }
+
       updateSubscriberList();
+    } catch (err) {
+      console.error(err.message);
+      const errorDiv = document.getElementById("error");
+      errorDiv.textContent = err.message;
+      errorDiv.style.color = "red";
     }
   };
 

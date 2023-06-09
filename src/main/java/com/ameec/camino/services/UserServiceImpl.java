@@ -42,12 +42,10 @@ public class UserServiceImpl implements UserService {
     public List<String> userLogin(UserDto userDto, String password) {
         List<String> response = new ArrayList<>();
         Optional<User> userOptional = userRepository.findByDisplayName(userDto.getDisplayName());
-        // userRepository. find by some field______
-        // trip repository. find by some field______ id, user id, etc
+     
         if (userOptional.isPresent()) {
             System.out.print(password + " " + userOptional.get().getPassword());
             if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())) {
-                // Should this call the api endpoint for trip/userid?
                 response.add("http://localhost:8080/trip.html");
                 response.add(userOptional.get().getId().toString());
             } else {
