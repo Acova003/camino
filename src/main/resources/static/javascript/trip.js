@@ -228,19 +228,16 @@ async function getLocations() {
       (err) => console.error(err.message)
     );
 
-    if (!response.ok) {
-      // handle error
-      return;
-    }
-
     // get the subscriber list from the response
     const subscriptionList = await response.json();
-    console.log(subscriptionList);
+    if (subscriptionList.length > 0) {
+      document.getElementById("subscriberList").style.display = "block";
 
-    // generate the HTML for the subscriber list
-    let html = "";
-    for (const subscription of subscriptionList) {
-      html += `<li><a href="/trip.html?userId=${subscription.subscribee.id}">${subscription.subscribee.displayName}</a></li>`;
+      // generate the HTML for the subscriber list
+      let html = "";
+      for (const subscription of subscriptionList) {
+        html += `<li><a href="/trip.html?userId=${subscription.subscribee.id}">${subscription.subscribee.displayName}</a></li>`;
+      }
     }
 
     // update the subscriber list on the page
