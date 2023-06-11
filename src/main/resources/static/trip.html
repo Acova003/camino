@@ -1,95 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Camino Dashboard</title>
     <link href="/css/trip.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <script type="module" src="/javascript/trip.js"></script>
-</head>
-<body>
-
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <h1>Camino Dashboard</h1>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="logOut">Log Out</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container-fluid">
+        <h1>Camino Dashboard</h1>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="logOut">Log Out</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <main class="container my-4">
-        <div class="row">
-            <div class="jumbotron">
-                <div class="container">
-                <h6 class="display-4"><span id="displayName"></span></h6>
-                  <h6 class="lead" id="distance"><strong>Distance to Santiago: </strong>x km</h6>
-                  <h6 class="lead" id="distanceTraveled"><strong> Distance traveled: </strong>x km</h6>
-                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    </svg>
-                    <span id="city"></span>
-                </h6>
-                
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Map of Progress</h5>
-                        <div id="map"></div>
-                        <div id="pano"></div>
-
-                    </div>
-                </div>
-            </div>
+      <div class="row">
+        <div class="jumbotron">
+          <div class="container">
+            <h6 class="display-4"><span id="displayName"></span></h6>
+            <h6 class="lead" id="distance">
+              <strong>Distance to Santiago: </strong>x km
+            </h6>
+            <h6 class="lead" id="distanceTraveled">
+              <strong> Distance traveled: </strong>x km
+            </h6>
+            <svg
+              width="1.5em"
+              height="1.5em"
+              viewBox="0 0 16 16"
+              class="bi bi-geo-alt"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+              />
+            </svg>
+            <span id="city"></span>
+          </div>
         </div>
-        <div id="hidden" style="display:none" class="row mt-4">
-            <div class="col-md-6">
-                <form id = "steps-form" name="update-steps">
-                    <div class="mb-3">
-                        <label for="steps" class="form-label">Update Steps</label>
-                        <input type="number" class="form-control" id="steps" name="steps" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <form id = "subscribe-form" name="subscribe">
-                    <div class="mb-3">
-                        <div id="error"></div>
-                        <label for="subscribee" class="form-label">Find subscribers by email</label>
-                        <input type="email" class="form-control" id="subscribee" name="subscribee-email" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-                <div>
-                    <h2 id="subscriberListHeader" style="display: none;">Subscribers</h2>
-                    <ul id="subscriberList">
-                    </ul>
-                  </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Map of Progress</h5>
+              <div id="map"></div>
+              <div id="pano"></div>
             </div>
+          </div>
+          <div>
+            <img id="banner" src="" alt="City Banner"></img>
+            <img id="photoRef" src="" alt="City Image" />
+            <div id="description"></div>
+          </div>
         </div>
+      </div>
+      <div id="hidden" style="display: none" class="row mt-4">
+        <div class="col-md-6">
+          <form id="steps-form" name="update-steps">
+            <div class="mb-3">
+              <label for="steps" class="form-label">Update Steps</label>
+              <input
+                type="number"
+                class="form-control"
+                id="steps"
+                name="steps"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <form id="subscribe-form" name="subscribe">
+            <div class="mb-3">
+              <div id="error"></div>
+              <label for="subscribee" class="form-label"
+                >Find subscribers by email</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="subscribee"
+                name="subscribee-email"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <div>
+            <h2 id="subscriberListHeader" style="display: none">Subscribers</h2>
+            <ul id="subscriberList"></ul>
+          </div>
+        </div>
+      </div>
     </main>
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWNvdmEwMDMiLCJhIjoiY2tiZnR4NHhiMHo1bDMwbXptbzVpa2ZqYiJ9.-3yiof0FhfqNoWeqMsa-dw';
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiYWNvdmEwMDMiLCJhIjoiY2tiZnR4NHhiMHo1bDMwbXptbzVpa2ZqYiJ9.-3yiof0FhfqNoWeqMsa-dw";
 
-        var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/acova003/ckbfuohe64i6o1in70tmp7rdt',
-        center: [ -5.570000, 42.605556],
-        zoom: 6
-        });
-
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/acova003/ckbfuohe64i6o1in70tmp7rdt",
+        center: [-5.57, 42.605556],
+        zoom: 6,
+      });
     </script>
-
-    
-</body>
+  </body>
 </html>
-

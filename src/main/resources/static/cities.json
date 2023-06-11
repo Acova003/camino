@@ -1,0 +1,47 @@
+{
+  "Saint-Jean-Pied-de-Port": {
+    "banner": "img/SJPP-banner.png",
+    "description": "Buen Camino, Peregrino! As you stand in Saint-Jean-Pied-de-Port, you join a lineage of thousands of pilgrims who have embarked on this profound journey from this historic town. Nestled in the foothills of the French Pyrenees, Saint-Jean-Pied-de-Port has long served as the gateway to the Camino Francés. Its medieval charm sets the tone for the pilgrimage that lies ahead, connecting you to the countless seekers who have tread this path before. This journey is not just about reaching Santiago de Compostela; it's about every step and every moment along the way. Embrace the journey and the transformation it promises. Buen Camino!",
+    "image": "img/SJPP.jpeg"
+  },
+  "Roncesvalles": {
+    "banner": "img/Roncesvalles-banner.png",
+    "description": "This is the first town pilgrims reach in Spain after crossing the Pyrenees. It is the site of a famous battle in 778 AD, where Charlemagne's rear guard was defeated, a story immortalized in the Song of Roland. Today, it's known for its stunning collegiate church and a pilgrims' hostel run by an order of Augustine monks.",
+    "image": "img/roncesvalles.jpg"
+  },
+  "Pamplona": {
+    "banner": "img/Pamplona-banner.png",
+    "description": "This city is famous worldwide for its San Fermín festival (Running of the Bulls). It is a lively city with a rich history stretching back to Roman times. Pilgrims will pass by the city's beautiful cathedral and walk along its old city walls. Pamplona also offers a range of services that might be appreciated after the relatively remote walk from Roncesvalles.",
+    "image": "img/pamplona.jpg"
+  },
+  "Logroño": {
+    "banner": "img/Logrono-banner.png",
+    "description": "As the capital of the La Rioja region, Logroño is known for its exquisite wines. The route through the city passes through vineyards and the city itself is home to several beautiful churches, including the Co-cathedral of Santa María de la Redonda.",
+    "image": "img/logrono.jpg"
+  },
+  "Burgos": {
+    "banner": "img/Burgos-banner.png",
+    "description": "This historic city is famous for its outstanding Gothic cathedral, one of the most impressive in Spain, which is a UNESCO World Heritage site. Other significant landmarks include the Monastery of Las Huelgas and the Cartuja of Miraflores.",
+    "image": "img/burgos.jpg"
+  },
+  "León": {
+    "banner": "img/Leon-banner.png",
+    "description": "León is another city with a rich history and is home to an array of architectural marvels, including the Gothic León Cathedral, with its stunning stained-glass windows, and the Basílica de San Isidoro, known for its fresco-covered Royal Pantheon. It is often considered a significant milestone on the Camino, a place to rest and rejuvenate before the final push to Santiago.",
+    "image": "img/leon.jpg"
+  },
+  "Astorga": {
+    "banner": "img/Astorga-banner.png",
+    "description": "Known for its Episcopal Palace designed by Antoni Gaudí and the Cathedral of Santa María, Astorga is a small city with a rich Camino history. It's also famous for its chocolate and the Roman ruins including a well preserved sewer system and mosaics.",
+    "image": "img/astorga.jpg"
+  },
+  "Ponferrada": {
+    "banner": "img/Ponferrada-banner.png",
+    "description": "This city is known for its imposing Templar Castle, a testament to its historical importance as a place of rest and defense for the pilgrims. Ponferrada is also located in the El Bierzo wine region, so pilgrims can enjoy local wines.",
+    "image": "img/ponferrada.jpg"
+  },
+  "Santiago de Compostela": {
+    "banner": "img/Santiago de Compostela-banner.png",
+    "description": "The final destination on the Camino de Santiago, this city is the capital of the Galicia region in northwest Spain. It is believed to be the resting place of St. James, one of Jesus Christ's apostles, and its cathedral is the ultimate goal for the pilgrims walking the Camino. The city’s old town is a UNESCO World Heritage site, filled with beautiful architecture, winding stone streets, and the famous Cathedral of Santiago de Compostela itself.",
+    "image": "img/santiago-de-compostela.jpg"
+  }
+}

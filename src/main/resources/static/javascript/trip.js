@@ -100,7 +100,7 @@ async function getLocations() {
     center: [userLon, userLat],
     zoom: 12,
   });
-  console.log(map.getCenter());
+
   window.map = map;
 
   var geojson = {
@@ -155,6 +155,31 @@ async function getLocations() {
         const city =
           data.results[0].components.city || data.results[0].components.town;
         document.getElementById("city").innerText = city;
+
+        // import cities json file
+        fetch("../cities.json")
+          .then((response) => response.json())
+          .then((cityInfo) => {
+            // Now you can use your data
+            if (cityInfo[city]) {
+              const description = cityInfo[city].description;
+              const photoRef = cityInfo[city].image;
+              const banner = cityInfo[city].banner;
+              document.getElementById("banner").src = banner;
+              document.getElementById("description").innerText = description;
+              document.getElementById("photoRef").src = photoRef;
+              console.log(cityInfo);
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+
+        document.getElementById("city").addEventListener("click", function () {
+          // Create and show the popup when the element is clicked
+          new mapboxgl.Popup({ offset: 25 })
+            .setLngLat([userLon, userLat]) // Set the location of the popup
+            .setHTML('<img src="' + photoRefUrl + '" />') // Set the content of the popup
+            .addTo(map); // Add the popup to the map
+        });
       }
     })
     .catch((error) => {
