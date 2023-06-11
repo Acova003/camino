@@ -153,8 +153,16 @@ async function getLocations() {
       console.log(data);
       if (data.results && data.results.length > 0) {
         const city =
-          data.results[0].components.city || data.results[0].components.town;
-        document.getElementById("city").innerText = city;
+          data.results[0].components.city ||
+          data.results[0].components.town ||
+          data.results[0].components.village;
+        console.log(city);
+        if (city === undefined) {
+          document.getElementById("city").innerText =
+            "You're nearly at the next city!";
+        } else {
+          document.getElementById("city").innerText = city;
+        }
 
         // import cities json file
         fetch("../cities.json")
@@ -162,12 +170,17 @@ async function getLocations() {
           .then((cityInfo) => {
             // Now you can use your data
             if (cityInfo[city]) {
+              const featureDiv = document.getElementById("cityFeature");
+              featureDiv.style.display = "";
+
               const description = cityInfo[city].description;
               const photoRef = cityInfo[city].image;
               const banner = cityInfo[city].banner;
+              const credential = cityInfo[city].credential;
               document.getElementById("banner").src = banner;
               document.getElementById("description").innerText = description;
               document.getElementById("photoRef").src = photoRef;
+              document.getElementById("credential").src = credential;
               console.log(cityInfo);
             }
           })
@@ -289,7 +302,6 @@ async function getLocations() {
     updateSubscriberList();
     const subscriberDiv = document.getElementById("hidden");
     subscriberDiv.style.display = "";
-  } else {
   }
   var stepsForm = document.getElementById("steps-form");
   if (stepsForm) {
