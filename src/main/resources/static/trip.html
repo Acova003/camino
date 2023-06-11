@@ -71,10 +71,15 @@
               <div id="pano"></div>
             </div>
           </div>
-          <div class="col-md-6 text-center">
+          <div
+            id="cityFeature"
+            style="display: none"
+            class="col-md-6 text-center"
+          >
             <img id="banner" src="" alt="City Banner" />
             <img id="photoRef" src="" alt="City Image" />
             <div id="description"></div>
+            <img id="credential" src="" alt="Credential" />
           </div>
         </div>
       </div>
@@ -93,9 +98,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-        </div>
-        <div class="col-md-6">
-          <h2 id="subscriberListHeader" style="display: none">
+
+          <h2 id="subscriberListHeader" style="display: none" class="mt-4">
             My Camino Family
           </h2>
           <ul id="subscriberList"></ul>
