@@ -226,6 +226,9 @@ async function getLocations() {
   const subscribe = async (e) => {
     e.preventDefault();
 
+    const errorDiv = document.getElementById("error");
+    errorDiv.textContent = "";
+
     try {
       const response = await fetch(
         `${baseUrl}/subscribe/${
@@ -260,6 +263,8 @@ async function getLocations() {
 
       let subscriberUL = document.getElementById("subscriberList");
 
+      subscriberUL.innerHTML = "";
+
       for (const subscription of subscriptionList) {
         let button = document.createElement("button");
         button.textContent = subscription.subscribee.displayName;
@@ -268,7 +273,7 @@ async function getLocations() {
           window.location.href = `/trip.html?userId=${subscription.subscribee.id}`;
         });
 
-        button.className = "btn btn-light";
+        button.className = "btn btn-light me-2";
 
         subscriberUL.appendChild(button);
 
