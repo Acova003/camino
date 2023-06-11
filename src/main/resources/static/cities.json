@@ -2,46 +2,61 @@
   "Saint-Jean-Pied-de-Port": {
     "banner": "img/SJPP-banner.png",
     "description": "Buen Camino, Peregrino! As you stand in Saint-Jean-Pied-de-Port, you join a lineage of thousands of pilgrims who have embarked on this profound journey from this historic town. Nestled in the foothills of the French Pyrenees, Saint-Jean-Pied-de-Port has long served as the gateway to the Camino Francés. Its medieval charm sets the tone for the pilgrimage that lies ahead, connecting you to the countless seekers who have tread this path before. This journey is not just about reaching Santiago de Compostela, it's about every step and every moment along the way. Embrace the journey and the transformation it promises. Buen Camino!",
-    "image": "img/SJPP.jpeg"
+    "image": "img/SJPP.jpeg",
+    "credential": "img/1.png"
   },
   "Roncesvalles": {
     "banner": "img/Roncesvalles-banner.png",
     "description": "This is the first town pilgrims reach in Spain after crossing the Pyrenees. It is the site of a famous battle in 778 AD, where Charlemagne's rear guard was defeated, a story immortalized in the Song of Roland. Today, it's known for its stunning collegiate church and a pilgrims' hostel run by an order of Augustine monks.",
-    "image": "img/roncesvalles.jpg"
+    "image": "img/roncesvalles.jpeg",
+    "credential": "img/2.png"
   },
   "Pamplona": {
     "banner": "img/Pamplona-banner.png",
     "description": "This city is famous worldwide for its San Fermín festival (Running of the Bulls). It is a lively city with a rich history stretching back to Roman times. Pilgrims will pass by the city's beautiful cathedral and walk along its old city walls. Pamplona also offers a range of services that might be appreciated after the relatively remote walk from Roncesvalles.",
-    "image": "img/pamplona.jpg"
+    "image": "img/pamplona.jpeg",
+    "credential": "img/3.png"
   },
   "Logroño": {
     "banner": "img/Logrono-banner.png",
     "description": "As the capital of the La Rioja region, Logroño is known for its exquisite wines. The route through the city passes through vineyards and the city itself is home to several beautiful churches, including the Co-cathedral of Santa María de la Redonda.",
-    "image": "img/logrono.jpg"
+    "image": "img/Logrono.jpeg",
+    "credential": "img/4.png"
   },
   "Burgos": {
     "banner": "img/Burgos-banner.png",
     "description": "This historic city is famous for its outstanding Gothic cathedral, one of the most impressive in Spain, which is a UNESCO World Heritage site. Other significant landmarks include the Monastery of Las Huelgas and the Cartuja of Miraflores.",
-    "image": "img/burgos.jpg"
+    "image": "img/Burgos.jpeg",
+    "credential": "img/5.png"
   },
   "León": {
     "banner": "img/Leon-banner.png",
     "description": "León is another city with a rich history and is home to an array of architectural marvels, including the Gothic León Cathedral, with its stunning stained-glass windows, and the Basílica de San Isidoro, known for its fresco-covered Royal Pantheon. It is often considered a significant milestone on the Camino, a place to rest and rejuvenate before the final push to Santiago.",
-    "image": "img/leon.jpg"
+    "image": "img/Leon.jpeg",
+    "credential": "img/6.png"
   },
   "Astorga": {
     "banner": "img/Astorga-banner.png",
     "description": "Known for its Episcopal Palace designed by Antoni Gaudí and the Cathedral of Santa María, Astorga is a small city with a rich Camino history. It's also famous for its chocolate and the Roman ruins including a well preserved sewer system and mosaics.",
-    "image": "img/astorga.jpg"
+    "image": "img/Astorga.jpeg",
+    "credential": "img/7.png"
+  },
+  "Cruz de Ferro": {
+    "banner": "img/Cruz de Ferro-banner.png",
+    "description": "As you ascend towards the highest point of your journey on the Camino Francés, you will find the humble yet deeply significant Cruz de Ferro. A simple iron cross atop a weathered wooden pole, it is surrounded by a mound of stones, each carried and left by previous pilgrims as a symbol of a burden released or a prayer offered. The tradition dates back centuries, representing the spiritual weight that many pilgrims shed along their journey. This is not just a landmark but a rite of passage, a moment of release and reflection. As you place your stone among the thousands, feel the connection to pilgrims past, present, and future, and the shared spirit of humanity that the Camino embodies. Continue on your path, a little lighter and ever forward \n \n Assignment: \n \n 1. Find a stone that represents a burden you would like to release. \n 2. Carry it with you throughout your day. \n 3. Place your stone under a tree and reflect on the weight you have released. \n 4. Continue on your journey, a little lighter and ever forward.",
+    "image": "img/Cruz-de-ferro-img.jpeg",
+    "credential": "img/8.png"
   },
   "Ponferrada": {
     "banner": "img/Ponferrada-banner.png",
     "description": "This city is known for its imposing Templar Castle, a testament to its historical importance as a place of rest and defense for the pilgrims. Ponferrada is also located in the El Bierzo wine region, so pilgrims can enjoy local wines.",
-    "image": "img/ponferrada.jpg"
+    "image": "img/Ponferrada.jpeg",
+    "credential": "img/9.png"
   },
   "Santiago de Compostela": {
     "banner": "img/Santiago de Compostela-banner.png",
     "description": "The final destination on the Camino de Santiago, this city is the capital of the Galicia region in northwest Spain. It is believed to be the resting place of St. James, one of Jesus Christ's apostles, and its cathedral is the ultimate goal for the pilgrims walking the Camino. The city’s old town is a UNESCO World Heritage site, filled with beautiful architecture, winding stone streets, and the famous Cathedral of Santiago de Compostela itself.",
-    "image": "img/santiago-de-compostela.jpg"
+    "image": "img/Santiago.jpeg",
+    "credential": "img/10.png"
   }
 }
