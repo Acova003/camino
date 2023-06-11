@@ -255,12 +255,24 @@ async function getLocations() {
 
     // get the subscriber list from the response
     const subscriptionList = await response.json();
-    let html = "";
     if (subscriptionList.length > 0) {
       document.getElementById("subscriberListHeader").style.display = "block";
 
+      let subscriberUL = document.getElementById("subscriberList");
+
       for (const subscription of subscriptionList) {
-        html += `<li><a href="/trip.html?userId=${subscription.subscribee.id}">${subscription.subscribee.displayName}</a></li>`;
+        let button = document.createElement("button");
+        button.textContent = subscription.subscribee.displayName;
+
+        button.addEventListener("click", function () {
+          window.location.href = `/trip.html?userId=${subscription.subscribee.id}`;
+        });
+
+        button.className = "btn btn-light";
+
+        subscriberUL.appendChild(button);
+
+        // html += `<button><id="subscriberButton" class="subscriber" a href="/trip.html?userId=${subscription.subscribee.id}">${subscription.subscribee.displayName}</a></button>`;
       }
     }
 
@@ -270,7 +282,8 @@ async function getLocations() {
 
   if (isMe) {
     updateSubscriberList();
-    document.getElementById("hidden").style.display = "block";
+    const subscriberDiv = document.getElementById("hidden");
+    subscriberDiv.style.display = "";
   } else {
   }
   var stepsForm = document.getElementById("steps-form");
@@ -291,6 +304,12 @@ async function getLocations() {
   logoutButton.addEventListener("click", function () {
     document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.replace("/");
+  });
+
+  var dashboardButton = document.getElementById("dashboard");
+  logoutButton.addEventListener("click", function () {
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.replace("/trip.html");
   });
 }
 
