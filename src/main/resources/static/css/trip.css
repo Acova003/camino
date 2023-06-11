@@ -1,81 +1,89 @@
 /* Navbar */
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Card */
 .card {
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Map */
 #map {
-    width: 60%;  
-    height: 400px;
+  width: 100%;
+  height: 700px;
+}
+
+/* banner */
+#banner {
+  width: 70%;
+}
+
+#photoRef {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 /* Form */
 form {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-control:focus {
-    border-color: #3b99fc;
-    box-shadow: none;
+  border-color: #64a6bd;
+  box-shadow: none;
 }
 
 .btn-primary {
-    background-color: #3b99fc;
-    border-color: #3b99fc;
+  background-color: #3c493f;
+  border-color: #30011e;
 }
 
 .btn-primary:hover {
-    background-color: #2880d8;
-    border-color: #2880d8;
+  background-color: #30011e;
+  border-color: #30011e;
 }
 
 .btn-primary:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .btn-primary:active {
-    background-color: #2066a0;
-    border-color: #2066a0;
+  background-color: #30011e;
+  border-color: #30011e;
 }
 
 #googleSVLocation {
-    font-size: 25px;
-    font-weight: 400;
-  }
+  font-size: 25px;
+  font-weight: 400;
+}
 
 .santiago {
-    background-image: url('/img/cathedral.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: -30px;
+  background-image: url("/img/cathedral.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -30px;
 }
 
 .cruz-de-ferro {
-    background-image: url('/img/cruz_de_ferro.png');
-    background-size: cover;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    cursor: pointer;
+  background-image: url("/img/cruz_de_ferro.png");
+  background-size: cover;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .current-location {
-    background-image: url('/img/user_pin.png');
-    background-size: cover;
-    width: 30px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
+  background-image: url("/img/user_pin.png");
+  background-size: cover;
+  width: 30px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
 }
-
-
