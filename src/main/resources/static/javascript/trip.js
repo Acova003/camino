@@ -169,6 +169,7 @@ async function getLocations() {
           .then((response) => response.json())
           .then((cityInfo) => {
             // Now you can use your data
+            console.log(cityInfo);
             if (cityInfo[city]) {
               const featureDiv = document.getElementById("cityFeature");
               featureDiv.style.display = "";
@@ -182,6 +183,7 @@ async function getLocations() {
               document.getElementById("photoRef").src = photoRef;
               document.getElementById("credential").src = credential;
               console.log(cityInfo);
+              console.logc(cityInfo[city]);
             }
           })
           .catch((error) => console.error("Error:", error));
@@ -295,7 +297,7 @@ async function getLocations() {
     }
 
     // update the subscriber list on the page
-    document.getElementById("subscriberList").innerHTML = html;
+    // document.getElementById("subscriberList").innerHTML = html;
   };
 
   if (isMe) {
