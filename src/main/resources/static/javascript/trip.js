@@ -160,8 +160,16 @@ async function getLocations() {
         if (city === undefined) {
           document.getElementById("city").innerText =
             "You're nearly at the next city!";
+        } else if (city === "Cidade Vella") {
+          document.getElementById("city").innerText = "Santiago de Compostela";
         } else {
           document.getElementById("city").innerText = city;
+        }
+
+        // add certificate if the city is santiago
+        if (city === "Cidade Vella") {
+          const certificateDiv = document.getElementById("certificate");
+          certificateDiv.style.display = "";
         }
 
         // import cities json file
@@ -183,7 +191,7 @@ async function getLocations() {
               document.getElementById("photoRef").src = photoRef;
               document.getElementById("credential").src = credential;
               console.log(cityInfo);
-              console.logc(cityInfo[city]);
+              // console.logc(cityInfo[city]);
             }
           })
           .catch((error) => console.error("Error:", error));

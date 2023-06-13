@@ -34,7 +34,6 @@ public class SubscriberServiceImpl implements SubscriberService{
         if (subscribeeOptional.isPresent() && subscriberOptional.isPresent()) {
             User subscribee = subscribeeOptional.get();
             User subscriber = subscriberOptional.get();
-            // Optional<Trip> findTrip= TripRepository.findByUserId(subscribee.getId());
 
             // Check if the user is trying to subscribe to themselves
             if (subscriber.getId().equals(subscribee.getId())) {

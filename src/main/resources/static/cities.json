@@ -5,8 +5,8 @@
     "image": "img/SJPP.jpeg",
     "credential": "img/1.png"
   },
-  "Roncesvalles": {
-    "banner": "img/Roncesvalles-banner.png",
+  "Orreaga/Roncesvalles": {
+    "banner": "img/Roncevalles-banner.png",
     "description": "This is the first town pilgrims reach in Spain after crossing the Pyrenees. It is the site of a famous battle in 778 AD, where Charlemagne's rear guard was defeated, a story immortalized in the Song of Roland. Today, it's known for its stunning collegiate church and a pilgrims' hostel run by an order of Augustine monks.",
     "image": "img/roncesvalles.jpeg",
     "credential": "img/2.png"
@@ -53,9 +53,9 @@
     "image": "img/Ponferrada.jpeg",
     "credential": "img/9.png"
   },
-  "Santiago de Compostela": {
-    "banner": "img/Santiago de Compostela-banner.png",
-    "description": "The final destination on the Camino de Santiago, this city is the capital of the Galicia region in northwest Spain. It is believed to be the resting place of St. James, one of Jesus Christ's apostles, and its cathedral is the ultimate goal for the pilgrims walking the Camino. The city’s old town is a UNESCO World Heritage site, filled with beautiful architecture, winding stone streets, and the famous Cathedral of Santiago de Compostela itself.",
+  "Cidade Vella": {
+    "banner": "img/Santiago-banner.png",
+    "description": "Congratulations, Peregrino! You've reached the end of your journey in the historic city of Santiago de Compostela. Each step you took along the Camino Francés has led you here, to the reputed burial place of the apostle Saint James the Greater. But reaching this point is not just about the destination, it's about the transformation that took place within you during the journey. \n\n Your pilgrimage was not only a physical journey, but a spiritual and emotional one as well. You followed the footsteps of thousands before you, through towns and cities, mountains and valleys, each with its own story in the annals of the Camino. \n\n This journey has undoubtedly instilled in you resilience, self-discovery, and an understanding of the shared human spirit that threads each pilgrim together. The significance of this experience is unique to every pilgrim, and the insights you've gained will resonate with you long after this moment. \n\n As you stand in the Praza do Obradoiro, gazing at the majestic Cathedral of Santiago de Compostela, take a moment to reflect on the journey behind you, the strength you found within, and the path that lies ahead. This is not an end, but a beginning of another journey – the journey forward, armed with the lessons of the Camino. Buen Camino, Peregrino!",
     "image": "img/Santiago.jpeg",
     "credential": "img/10.png"
   }

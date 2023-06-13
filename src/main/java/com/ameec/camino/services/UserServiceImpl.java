@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,10 +31,15 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public List<String> addUser(UserDto userDto) {
         List<String> response = new ArrayList<>();
+
+    try {
         User user = new User(userDto);
         userRepository.saveAndFlush(user);
         response.add("http://localhost:8080/trip.html");
-        return response;
+    } catch (DataIntegrityViolationException e) {
+        throw new RuntimeException("User with this email or username already exists.");
+    }
+    return response;
     }
 
 
