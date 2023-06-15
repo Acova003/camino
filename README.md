@@ -9,9 +9,10 @@ Camino is a fitness web application that takes users on a virtual pilgrimage on 
 
 ## Key Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Users can record their daily steps
+- View current location
+- Learn information about the city that they are in
+- Subscribe to other users
 
 ## Tech Stack
 
