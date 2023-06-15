@@ -5,7 +5,7 @@
 
 Camino is a fitness web application that takes users on a virtual pilgrimage on the Camino de Santiago Frances. With the integration of the Mapbox API and daily step recording, users can seamlessly track their progress along the Camino de Santiago, immersing themselves in the picturesque landscape while monitoring their walking achievements through the app's features.
 
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/836191581?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Camino Technical Demo">
+<iframe src="https://player.vimeo.com/video/836191581?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Camino Technical Demo"></iframe>
 
 ## Key Features
 
